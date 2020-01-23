@@ -1,0 +1,41 @@
+#JavaScript
+
+・IE11にも対応必須ならES5に、変換必要でなければ、ES2015以上にしよう
+
+##文法
+
+
+##非同期処理
+・ajaxではなく、axios。GETのみであればfetch
+
+仮想DOM
+React
+Vue
+Angular
+Elm
+
+##Editor
+vscode + Typescript + ESLint + Prettier
+
+##module bundler
+Web開発　webpack
+ライブラリ　Rollup
+
+##テスト
+Jest
+
+
+#TypeScript
+
+npm install -g typescript
+tsc greeter.ts
+
+https://qiita.com/shibukawa/items/19ab5c381bbb2e09d0d9
+
+https://qiita.com/suzu-4/items/ea5d802cb0ad16682ae2
+
+https://dev.classmethod.jp/client-side/javascript/typescript-tutorial/
+https://future-architect.github.io/typescript-guide/
+https://employment.en-japan.com/engineerhub/entry/2019/04/16/103000
+
+

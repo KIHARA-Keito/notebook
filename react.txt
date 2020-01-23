@@ -1,0 +1,70 @@
+
+# create-react-appのインストールと起動
+
+ターミナルで作成したい親階層に移動して下記コマンド実行
+この場合「myapp」フォルダが作成されてその中にすべてダウンロードされる。
+$ npx create-react-app myapp
+
+作成したフォルダに移動
+$ cd myapp
+
+VScode起動
+$ code .
+
+Reactアプリケーションを起動する
+$ npm start
+
+# インポートとエクスポート
+
+## エクスポート
+
+・名前付きエクスポート
+・デフォルトエクスポート
+
+・名前付きエクスポート
+ひとつのファイルに何度でも使える
+
+conts value = '';
+conts func = () => {};
+class myClass = {}
+
+export = { value, func, myClass }
+
+・デフォルトエクスポート
+ひとつのファイルに一度だけしか使えない
+※デフォルト指定は1回だけという意味。名前付きエクスポートは共存可能。
+
+class Animal {}
+export default Animal;
+
+## インポート
+
+・デフォルトエクスポート
+import Animal from './export';
+※名前は一致させなくてよい
+
+・名前付きエクスポート
+import { value, func } from './export';
+※名前は一致させる必要がある
+
+名前変えたい場合
+import { value as valueA } from './export';
+
+すべてをオブジェクトに格納する方法
+import * as obj from './export';
+
+両方同時に読み込む
+import Abumal, { value as valueA } from './export';
+
+# chrome拡張機能追加
+react developer toolsをchromeにて追加
+
+# cssを使う方法
+
+・cssファイルを読み込む
+・インラインスタイル
+・CSS in JS
+・実装済みのコンポーネント
+MATERIAL UI, React Bootstrap
+
+

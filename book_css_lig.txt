@@ -1,0 +1,224 @@
+#最強のCSS設計
+https://www.amazon.co.jp/dp/4797384557
+
+##OOCSS
+ストラクチャーとスキン
+コンテナーとコンテンツ
+
+http://oocss.org/
+https://www.slideshare.net/stubbornella/object-oriented-css
+
+##SMACSS
+Base
+State
+Module
+Layout
+Theme
+
+http://smacss.com/ja
+
+##BEM
+Block
+Element
+Modifier
+
+https://en.bem.info/
+
+##FLOCSS
+Foundation
+Layout
+Object
+ - Component
+ - Project
+ - Utility
+ 
+ https://github.com/hiloki/flocss
+ 
+ ##MCSS
+OOCSSとBEM、レイヤー構造とカテゴライズ
+
+ http://operatino.github.io/MCSS/ja/
+ 
+ ##SUIT CSS
+BEMとSMACSSをアレンジした命名、汎用クラス推奨
+
+ http://suitcss.github.io/
+
+##MVCSS
+
+##ITCSS
+
+##Sass
+Prepros
+
+test/
+  - index.html
+  - assets/
+    - sass/
+      - style.scss
+
+###Sassの機能
+ネスト
+&(アンパサンド)
+@import
+変数
+@mixin (@includeで読み込みできる、引数渡しも可)
+
+##ケーススタディ１　OOCSS,SMACSS
+ストラクチャーとスキン
+例）
+<a class="buttom">XXXX</a>
+<a class="buttom buttom-primary">XXXX</a>
+<a class="buttom buttom-scondary">XXXX</a>
+
+buttom {
+	...
+	&.buttom-primary {
+		...
+	}
+	&.buttom-scondary {
+		...
+	}
+}
+buttom.buttom-primary {} とすることで詳細度をあげる
+
+コンテナーとコンテンツ
+.form { ... }　これがコンテナー
+.buttom { ... }
+.input { ... }
+.textarea { ... }
+↑コンテナーと分離するということ
+
+Base
+reset.cssやnormalize.cssと、最小限の初期化セレクタ
+
+Layout
+l-header,
+l-footer {
+	...
+}
+
+Module
+OOCSSのストラクチャーとスキンと同一っぽい感じ
+
+State
+状態遷移のためのクラス
+
+Theme
+テーマにそって全体や一部をかえるためのクラス
+季節ものや他言語など
+
+Sassを使うならばファイル分割すること！
+例）
+scss/
+	setting
+		_color.scss ※色変数
+		_font.scss ※フォント指定変数
+	tool
+		_mixin.scss ※その名のとおり
+		_keyframes.scss ※その名のとおり
+	base
+		_reset.scss ※既存使う
+		_nomalize.scss ※既存使う
+		_base.scss ※基本となるスタイル
+		_generic.scss ※基本となるスタイル
+		layout
+			_grid.scss
+			_l-header.scss
+			_l-footer.scss
+		module ※ファイル名＝モジュール名
+			_icon.scss
+			_button.scss
+			_heading.scss
+			_media.scss
+			_form.scss
+			_articlelist.scss
+			_panel.scss
+		theme
+			_decoration.scss
+			_spring.scss
+			_summer.scss
+		master.scss ※これで@importする
+
+SMACSSのLayoutについて
+大枠のレイアウト
+レイアウトを変更するレイアウト
+汎用性の高いレイアウト
+※Bootstrapなど参考
+
+##ケーススタディ２　BEM
+.block
+.block__element(Element)
+.block_key_value(Modifier)
+
+Modifierはどういう分け方をするか一考必要！
+・今後も拡張予定の場合は細かくわける
+・あまり追加ない場合は大きくわける
+
+ModifierはBlock、Elementどちらにつけてもよい
+
+###命名
+基本
+.block-name__element-name_modifier-name(key_value)
+MindBEMding
+.block-name__element-name--modifier-name
+SUIT CSS
+.BlockName-elementName--modifierName.is-stateName
+
+他Blockを流用する際の解決策は、
+・Wrap(タグ増やしてそれようのクラス追加)
+・Mixes(それようのクラス追加)
+がある
+
+使用回数３回超えるようであれば、リファクタリングする
+
+##ケーススタディ３　こんなときどうする
+
+###JSのフック
+JSのフックにはなるべくIDをつかう、複数ある場合はclassで
+JSのフックにはCSSのスタイルあてない
+JSのフックにはプレフィックスjs−を使う
+
+###ドキュメント
+ディレクトリ
+文書ルール（NG or OKなど）
+CSS構成案　セレクタ例、JSフック、Sub Module クラス指定
+対象ブラウザ
+
+参照
+Google HTML/CSS Style Guide
+Code Guide by
+
+使用単語の統一（モジュール？コンポーネント？とか）
+クラス命名規則、省略とか
+
+コメントルール
+スタイルガイド
+Utilityクラスの作り方、ルールにのっとって命名すればOK
+
+クラス名の命名規則　bootstrapなど参考にしよう
+マージン指定はつけはずしできるようにしておく、モジュール要素に最初から指定いれないこと
+@extendの上限決める、指定ファイル制限とか
+cssの命名ルールはcssだけにしたほうがよい、特殊すぎるため
+
+##ツール紹介
+スタイルガイドジェネレーター
+StyleDocco
+	npm install -fg? styledocco
+	styledocco assets/css(パス) @mdo
+KSS
+hologram
+
+CSS Lint
+https://github.com/CSSLint/csslint/wiki/Rules
+https://coliss.com/articles/build-websites/operation/css/css-lint-rules.html
+https://gist.github.com/hail2u/1303613
+
+StyleStats
+https://html5experts.jp/t32k/5743/
+
+SCSS-Lint
+
+CSScomb
+
+
