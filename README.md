@@ -1,4 +1,3 @@
 # index
 
-・(Git,Github)[https://github.com/KIHARA-Keito/notebook/git.md]
-
+・[Git,Github](https://github.com/KIHARA-Keito/notebook/blob/master/git.md)
